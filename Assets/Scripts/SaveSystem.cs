@@ -34,7 +34,7 @@ public static class SaveSystem
     //Hands data to the PlayerData Constructor function since it's static and can be called from there (player data script)
     public static PlayerData LoadPlayer(){
         if(File.Exists(playerSavePath)){
-            BinaryFormatter formatter = new BinaryFormatter;
+            BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(playerSavePath, FileMode.Open);
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             stream.Close();
