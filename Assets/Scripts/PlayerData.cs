@@ -11,8 +11,8 @@ public class PlayerData
 
     //Constructor, takes data from save system and jams it in there
     public PlayerData (Player player){
-        playerLevel = player.level;
-        playerGold = player.gold;
+        playerLevel = player.GetLevel();
+        playerGold = player.GetGold();
 
     }
 }
