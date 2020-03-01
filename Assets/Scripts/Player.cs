@@ -9,11 +9,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5f;
     private int _level;
     private int _gold;
+
+    private float _currentHealth;
+
+    private float _maxHealth;
     
     void Start()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         SwapMinions(0);
+        _maxHealth = 100;
+        _currentHealth = _maxHealth;
     }
 
     public void SwapMinions(int slot)
@@ -37,5 +43,14 @@ public class Player : MonoBehaviour
     public int GetGold()
     {
         return _gold;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return _currentHealth;
+    }
+
+    public float GetMaxHealth(){
+        return _maxHealth;
     }
 }
