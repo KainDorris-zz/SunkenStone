@@ -12,13 +12,12 @@ public class Player : MonoBehaviour
 
     private float _currentHealth;
 
-    private float _maxHealth;
+    private float _maxHealth = 100;
     
     void Start()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         SwapMinions(0);
-        _maxHealth = 100;
         _currentHealth = _maxHealth;
     }
 

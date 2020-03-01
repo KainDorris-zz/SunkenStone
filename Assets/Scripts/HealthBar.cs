@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
@@ -11,8 +11,8 @@ public class HealthBar : MonoBehaviour
     float healthBarMax;
     Slider slider;
     private void Start() {
-        slider = gameObject.GetComponent<Slider>();
-        slider.highValue = player.GetMaxHealth();
+        slider = GetComponent<Slider>();
+        slider.maxValue = player.GetMaxHealth();
         playerHealth = player.GetCurrentHealth();
         
 
@@ -20,11 +20,12 @@ public class HealthBar : MonoBehaviour
 
 
     private void Update() {
-        slider.value = playerHealth;
+        UpdateEntityHealth();
     }
 
     private void UpdateEntityHealth(){
         playerHealth = player.GetCurrentHealth();
+        slider.value = playerHealth;
     }
 
 }
