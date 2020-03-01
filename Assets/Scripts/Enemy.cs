@@ -49,18 +49,16 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator AttackRoutine()
     {
-        // _player.TakeDamage(damage);
         float animationPercent = 0;
         audioSource.Play();
+        _player.TakeDamage(damage);
         while (animationPercent <= 1)
         {
             animationPercent += Time.deltaTime * attackSpeed;
             // Trigger Animation here.
-            Debug.Log("Animating!");
             yield return null;
         }
         audioSource.Stop();
-        Debug.Log("Animation Done");
     }
 
     public void TakeDamage(float dmg)
