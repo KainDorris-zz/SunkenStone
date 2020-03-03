@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private GameObject projectile;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class InputManager : MonoBehaviour
     {
         PlayerMovement();
         PlayerHotKeys();
+        Shoot();
     }
     
     private void PlayerMovement()
@@ -28,7 +30,14 @@ public class InputManager : MonoBehaviour
 
         player.transform.Translate(direction * speed * Time.deltaTime);
     }
-    
+
+    private void Shoot(){
+        if(Input.GetButtonDown("Fire1")){
+            Instantiate(projectile, player.transform.position, Quaternion.identity);
+        }
+    }
+
+
     private void PlayerHotKeys()
     {
         // TODO: Determine Default Keys for Hot Swapping Monsters. For Now: 1 , 2 , 3 are used to allow WSDA Movement.
