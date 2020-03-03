@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class Minion : MonoBehaviour
 {
-    [FormerlySerializedAs("sprite")] [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Start()
     {
