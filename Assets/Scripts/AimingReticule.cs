@@ -24,7 +24,7 @@ public class AimingReticule : MonoBehaviour
 
     public Vector2 GetCursorPositionInWorld(){
         CameraPositionInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(CameraPositionInWorld);
+        //Debug.Log(CameraPositionInWorld);
         return CameraPositionInWorld;
     }
 
