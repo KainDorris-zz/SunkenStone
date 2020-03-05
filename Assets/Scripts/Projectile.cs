@@ -18,12 +18,14 @@ public class Projectile : MonoBehaviour
         rb2.drag = 0;
         rb2.mass = 0.01f;
         Vector2 reticuleposition = reticule.GetCursorPositionInWorld();
-        Vector2 gov2 = transform.position;
-        //transform.rotation = Quaternion.LookRotation(reticuleposition);
-        rb2.velocity = (reticuleposition - gov2 ).normalized * speed;
+        Vector3 reticulepositionv3 = reticuleposition;
+        Vector3 gameobjectvector3 = transform.position;
+        transform.rotation = Quaternion.LookRotation(reticuleposition);
+        rb2.velocity = (reticulepositionv3 - gameobjectvector3 ).normalized * speed;
         
-        float angle = Mathf.Atan2(reticuleposition.y, reticuleposition.x) * Mathf.Rad2Deg; 
-        transform.rotation = Quaternion.Euler(0, 0, angle);     
+        float angle = Mathf.Atan2(reticuleposition.y, reticuleposition.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector2.up); 
+        transform.rotation = rotation;     
         Debug.Log(transform.rotation);  
         
     }
