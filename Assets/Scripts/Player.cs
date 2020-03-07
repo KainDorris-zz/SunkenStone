@@ -29,7 +29,17 @@ public class Player : MonoBehaviour
         spriteRenderer.sprite = minionSpriteRenderer.sprite;
         spriteRenderer.color = minionSpriteRenderer.color;
     }
+    
+    public void TakeDamage(float dmg)
+    {
+        _currentHealth -= dmg;
 
+        if (_currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     public float GetSpeed()
     {
         return speed;

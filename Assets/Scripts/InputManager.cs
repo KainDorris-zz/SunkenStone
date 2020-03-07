@@ -39,7 +39,14 @@ public class InputManager : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-        player.transform.Translate(direction * speed * Time.deltaTime);
+        if (horizontalInput != 0 && verticalInput != 0)
+        {
+            player.transform.Translate(direction * ((speed * 0.7f ) * Time.deltaTime));
+        }
+        else
+        {
+            player.transform.Translate(direction * (speed * Time.deltaTime));
+        }
     }
 
     private void Shoot(){
