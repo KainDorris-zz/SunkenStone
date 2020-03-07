@@ -6,11 +6,19 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject playerBody;
+
+    public Camera cam;
+
+    private Vector3 mousePos;
+
+
     
     // Start is called before the first frame update
     void Start()
     {
         if (player == null) player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        
     }
 
     // Update is called once per frame
@@ -19,6 +27,9 @@ public class InputManager : MonoBehaviour
         PlayerMovement();
         PlayerHotKeys();
         Shoot();
+
+        
+
     }
     
     private void PlayerMovement()
@@ -33,7 +44,13 @@ public class InputManager : MonoBehaviour
 
     private void Shoot(){
         if(Input.GetButtonDown("Fire1")){
-            Instantiate(projectile, player.transform.position, Quaternion.identity);
+            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 lookDir = playerBody.transform.position - mousePos;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
+            Vector3 angleVector = new Vector3(0f, 0f, angle);
+            playerBody.transform.rotation = Quaternion.Euler(angleVector);
+            Instantiate(projectile, player.transform.position, playerBody.transform.rotation);
+
         }
     }
 

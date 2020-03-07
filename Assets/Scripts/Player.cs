@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Minion> minions;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private GameObject reticule;
+    
     private int _level;
     private int _gold;
 

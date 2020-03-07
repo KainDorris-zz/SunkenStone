@@ -5,34 +5,47 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    [SerializeField] private AimingReticule reticule;
-    [SerializeField] private float speed = 5f;
-    private Vector2 targetdirectionX;
-    private Vector2 targetdirectionY;
-    private Rigidbody2D rb2;
+    Rigidbody2D rb;
+
+    [SerializeField] float projectileForce = 5f;
+    [SerializeField] float projectileDamage = 10f;
+    
+    private Enemy enemycollision;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2 = GetComponent<Rigidbody2D>();
-        rb2.drag = 0;
-        rb2.mass = 0.01f;
-        Vector2 reticuleposition = reticule.GetCursorPositionInWorld();
-        Vector3 reticulepositionv3 = reticuleposition;
-        Vector3 gameobjectvector3 = transform.position;
-        transform.rotation = Quaternion.LookRotation(reticuleposition);
-        rb2.velocity = (reticulepositionv3 - gameobjectvector3 ).normalized * speed;
-        
-        float angle = Mathf.Atan2(reticuleposition.y, reticuleposition.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector2.up); 
-        transform.rotation = rotation;     
-        Debug.Log(transform.rotation);  
-        
+       gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileForce, ForceMode2D.Impulse);
+       StartCoroutine(PlayAudioClip());
     }
 
     // Update is called once per frame
     void Update()
     {
+        Destroy(gameObject, 3.0f);
         
     }
+
+    IEnumerator PlayAudioClip(){
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
+        yield return new WaitForSeconds(audio.clip.length);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col){
+        Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponent<SpriteRenderer>());
+        
+        if (col.gameObject.GetComponent<Enemy>())
+        {
+            enemycollision = col.gameObject.GetComponent<Enemy>();
+            enemycollision.TakeDamage(projectileDamage);
+            
+        }
+
+        Destroy(gameObject, 2f);   
+    }
+
+    
 }
