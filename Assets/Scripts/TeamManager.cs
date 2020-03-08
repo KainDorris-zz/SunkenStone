@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -111,6 +112,12 @@ public class TeamManager : MonoBehaviour
         {
             teamSlots[slotIndex].sprite = defaultImage;   
         }
+    }
+
+    public void Continue()
+    {
+        CreateTeam();
+        SceneManager.LoadScene(2);
     }
     
 }
