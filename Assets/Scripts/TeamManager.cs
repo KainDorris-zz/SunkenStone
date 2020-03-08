@@ -1,29 +1,45 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class TeamManager : MonoBehaviour
 {
     [SerializeField] private Sprite defaultImage;
-    // Change this to a List<Minion> once team approves of design.
-    [SerializeField] private List<Sprite> minions;
     [SerializeField] private List<Image> teamSlots;
     [SerializeField] private List<Image> profiles;
-
+    [SerializeField] private MonsterDatabase monsterDatabase;
+    [SerializeField] private List<Monster> minions;
+    public static List<Monster> PlayerTeam;
     private int _profileIndex = 0;
-    private void Start()
+    
+    private void Awake()
     {
+        if (monsterDatabase == null)
+        {
+            monsterDatabase = FindObjectOfType<MonsterDatabase>();
+            CheckForNullError(monsterDatabase, "Monster Data Base is Null at Team Manager.");
+        }
+        monsterDatabase.BuildMonsterDatabase();
+        minions = monsterDatabase.GetMonsters().Where(m => m.GetIsCollected()).ToList();
         SetSlotDefaults();
         InitializeProfiles();
+    }
+
+    // Add this to a static library so it can be used throughout the project.
+    private void CheckForNullError(Object obj, string message)
+    {
+        if(obj == null) Debug.LogError(message);
     }
 
     private void InitializeProfiles()
     {
         for (int i = 0; i < profiles.Count; i++)
         {
-            profiles[i].sprite = minions[i];
+            profiles[i].sprite = minions[i].GetSprite();
         }
     }
 
@@ -35,12 +51,24 @@ public class TeamManager : MonoBehaviour
         }
     }
 
+    private void CreateTeam()
+    {
+        List<Monster> newMinions = new List<Monster>();
+
+        foreach (Image slot in teamSlots)
+        {
+           newMinions.Add(monsterDatabase.GetMonsterBySprite(slot.sprite)); 
+        }
+
+        PlayerTeam = newMinions;
+    }
+
     private void SlideProfiles()
     {
         int minionStart = _profileIndex;
         for (int i = 0; i < profiles.Count; i++)
         {
-            profiles[i].sprite = minions[minionStart];
+            profiles[i].sprite = minions[minionStart].GetSprite();
             minionStart++;
         }
     }
@@ -64,14 +92,25 @@ public class TeamManager : MonoBehaviour
         }
     }
 
-    public void Add()
+    public void Add(int slotIndex)
     {
-        Debug.Log("Add");
+        // Loop over each team slot until you find one that is empty and add the that index in the list.
+        foreach (Image slot in teamSlots)
+        {
+            if (slot.sprite == defaultImage)
+            {
+                slot.sprite = profiles[slotIndex].sprite;
+                return;
+            }
+        }
     }
 
-    public void Remove()
+    public void Remove(int slotIndex)
     {
-        Debug.Log("Remove");
+        if (teamSlots[slotIndex].sprite != defaultImage)
+        {
+            teamSlots[slotIndex].sprite = defaultImage;   
+        }
     }
     
 }

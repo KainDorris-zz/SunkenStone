@@ -11,6 +11,8 @@
           <e p="HealthBar.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="Minion.cs" t="Include" />
+          <e p="Monster.cs" t="Include" />
+          <e p="MonsterDatabase.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="PlayerData.cs" t="Include" />
           <e p="SaveSystem.cs" t="Include" />

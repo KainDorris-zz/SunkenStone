@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private List<Minion> minions;
+    [SerializeField] private List<Monster> minions;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
     private int _level;
@@ -23,10 +24,9 @@ public class Player : MonoBehaviour
 
     public void SwapMinions(int slot)
     {
-        Minion minion = minions[slot];
-        SpriteRenderer minionSpriteRenderer = minion.GetSpriteRenderer();
-        spriteRenderer.sprite = minionSpriteRenderer.sprite;
-        spriteRenderer.color = minionSpriteRenderer.color;
+        Monster minion = minions[slot];
+        Sprite minionSprite = minion.GetSprite();
+        spriteRenderer.sprite = minionSprite;
     }
     
     public void TakeDamage(float dmg)
@@ -61,5 +61,10 @@ public class Player : MonoBehaviour
 
     public float GetMaxHealth(){
         return _maxHealth;
+    }
+
+    public List<Monster> GetMinions()
+    {
+        return minions;
     }
 }
