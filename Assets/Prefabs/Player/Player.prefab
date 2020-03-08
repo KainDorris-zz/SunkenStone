@@ -96,7 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950c42ae67044d4d951458fefe1cd04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6432729552214397797}
+  projectile: {fileID: 6884590823023950931, guid: e48bc0ef603f79c4692ea993aed7cda2,
+    type: 3}
+  cam: {fileID: 0}
 --- !u!1 &244138290632077173
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5950c42ae67044d4d951458fefe1cd04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6432729552214397797}
 --- !u!1 &6432729552214397798
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +272,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ddb52af243ef2b4a883d12845524146, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -277,7 +280,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6432729552214397797
@@ -298,6 +301,7 @@ MonoBehaviour:
   - {fileID: 8897068208496737356, guid: 0d232b6c36434a94091d4a48d1260317, type: 3}
   spriteRenderer: {fileID: 6432729552214397796}
   speed: 5
+  reticule: {fileID: 222001642548301280, guid: 5bbe46b3c11f6bb4984fb1d5795464b4, type: 3}
 --- !u!50 &1770966180
 Rigidbody2D:
   serializedVersion: 4

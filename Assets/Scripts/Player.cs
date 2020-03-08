@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<Monster> minions;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
+    
     private int _level;
     private int _gold;
 
