@@ -1,21 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private List<Monster> minions;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
     
+    private List<Monster> _minions;
     private int _level;
     private int _gold;
 
     private float _currentHealth;
 
     private float _maxHealth = 100;
-    
+
+    private void Awake()
+    {
+       _minions = TeamManager.PlayerTeam;
+    }
+
     void Start()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,7 +31,7 @@ public class Player : MonoBehaviour
 
     public void SwapMinions(int slot)
     {
-        Monster minion = minions[slot];
+        Monster minion = _minions[slot];
         Sprite minionSprite = minion.GetSprite();
         spriteRenderer.sprite = minionSprite;
     }
@@ -66,6 +72,6 @@ public class Player : MonoBehaviour
 
     public List<Monster> GetMinions()
     {
-        return minions;
+        return _minions;
     }
 }
