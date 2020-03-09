@@ -7,14 +7,19 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="AimingReticule.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
           <e p="InputManager.cs" t="Include" />
           <e p="Minion.cs" t="Include" />
+          <e p="Monster.cs" t="Include" />
+          <e p="MonsterDatabase.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="PlayerData.cs" t="Include" />
+          <e p="Projectile.cs" t="Include" />
           <e p="SaveSystem.cs" t="Include" />
           <e p="SceneLoader.cs" t="Include" />
+          <e p="TeamManager.cs" t="Include" />
           <e p="UIController.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">

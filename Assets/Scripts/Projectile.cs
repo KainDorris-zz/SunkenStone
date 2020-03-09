@@ -33,12 +33,17 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(audio.clip.length);
     }
 
-    private void OnCollisionEnter2D(Collision2D col){
+    private void Impact()
+    {
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<SpriteRenderer>());
-        
+    }
+
+    private void OnCollisionEnter2D(Collision2D col){
+
         if (col.gameObject.GetComponent<Enemy>())
         {
+            Impact();
             enemycollision = col.gameObject.GetComponent<Enemy>();
             enemycollision.TakeDamage(projectileDamage);
             

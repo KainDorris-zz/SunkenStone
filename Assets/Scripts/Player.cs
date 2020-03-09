@@ -1,20 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private List<Minion> minions;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
     
+    private List<Monster> _minions;
     private int _level;
     private int _gold;
 
     private float _currentHealth;
 
     private float _maxHealth = 100;
-    
+
+    private void Awake()
+    {
+       _minions = TeamManager.PlayerTeam;
+    }
+
     void Start()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,10 +31,9 @@ public class Player : MonoBehaviour
 
     public void SwapMinions(int slot)
     {
-        Minion minion = minions[slot];
-        SpriteRenderer minionSpriteRenderer = minion.GetSpriteRenderer();
-        spriteRenderer.sprite = minionSpriteRenderer.sprite;
-        spriteRenderer.color = minionSpriteRenderer.color;
+        Monster minion = _minions[slot];
+        Sprite minionSprite = minion.GetSprite();
+        spriteRenderer.sprite = minionSprite;
     }
     
     public void TakeDamage(float dmg)
@@ -62,5 +68,10 @@ public class Player : MonoBehaviour
 
     public float GetMaxHealth(){
         return _maxHealth;
+    }
+
+    public List<Monster> GetMinions()
+    {
+        return _minions;
     }
 }

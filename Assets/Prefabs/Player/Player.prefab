@@ -99,8 +99,9 @@ MonoBehaviour:
   player: {fileID: 6432729552214397797}
   projectile: {fileID: 6884590823023950931, guid: e48bc0ef603f79c4692ea993aed7cda2,
     type: 3}
-  cam: {fileID: 0}
---- !u!1 &244138290632077173
+  playerBody: {fileID: 1331724592}
+  cam: {fileID: 605058105}
+--- !u!1 &1331724592
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,95 +109,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4832745783121023653}
-  - component: {fileID: 6168570062662466955}
-  - component: {fileID: 6099895500198918568}
-  - component: {fileID: 325811753629370286}
+  - component: {fileID: 1331724593}
   m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
+  m_Name: PlayerBody
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4832745783121023653
+--- !u!4 &1331724593
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244138290632077173}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_GameObject: {fileID: 1331724592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 1}
   m_Children: []
   m_Father: {fileID: 6432729552214397795}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &6168570062662466955
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244138290632077173}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.30598074, g: 0.3190637, b: 0.33962262, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &6099895500198918568
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244138290632077173}
-  m_Enabled: 1
---- !u!114 &325811753629370286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244138290632077173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5950c42ae67044d4d951458fefe1cd04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 6432729552214397797}
 --- !u!1 &6432729552214397798
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,10 +160,10 @@ Transform:
   m_GameObject: {fileID: 6432729552214397798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 605058106}
-  - {fileID: 4832745783121023653}
+  - {fileID: 1331724593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -271,7 +205,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2ddb52af243ef2b4a883d12845524146, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -295,13 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ba67efbe74331408fc1b8e76d82ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minions:
-  - {fileID: 3737909931886458052, guid: c88014642e274234da475a8b36751a14, type: 3}
-  - {fileID: 5586588286808744679, guid: 33d90f10973d80d41bae61388dc1dfa6, type: 3}
-  - {fileID: 8897068208496737356, guid: 0d232b6c36434a94091d4a48d1260317, type: 3}
   spriteRenderer: {fileID: 6432729552214397796}
   speed: 5
-  reticule: {fileID: 222001642548301280, guid: 5bbe46b3c11f6bb4984fb1d5795464b4, type: 3}
 --- !u!50 &1770966180
 Rigidbody2D:
   serializedVersion: 4
