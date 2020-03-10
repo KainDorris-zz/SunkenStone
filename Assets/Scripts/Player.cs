@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     public void SwapMinions(int slot)
     {
+        if (_minions?[slot] == null) return; // This can likely be removed after game flow is finished.
         Monster minion = _minions[slot];
         Sprite minionSprite = minion.GetSprite();
         spriteRenderer.sprite = minionSprite;
