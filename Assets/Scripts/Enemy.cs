@@ -70,4 +70,8 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public float GetCurrentHealth(){
+        return health;
+    }
 }
