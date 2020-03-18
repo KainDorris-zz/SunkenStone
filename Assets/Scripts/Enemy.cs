@@ -8,13 +8,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float health;
     [SerializeField] private float speed = 4f;
-    [SerializeField] private float attackSpeed = 1;
+    [SerializeField] public float attackSpeed = 1;
     [SerializeField] private float attackCoolDown = 2f;
     [SerializeField] private float damage = 10f;
     [SerializeField] private float stopDistance = 1f;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
     private float _attackTimer;
+
+    [SerializeField] public GameObject enemyBody;
 
     private void Start()
     {
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackRoutine()
+    public virtual IEnumerator AttackRoutine()
     {
         float animationPercent = 0;
         audioSource.Play();
@@ -73,5 +75,9 @@ public class Enemy : MonoBehaviour
 
     public float GetCurrentHealth(){
         return health;
+    }
+
+    public Vector3 GetPlayerPosition(){
+        return _player.transform.position;
     }
 }
