@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
             Vector3 angleVector = new Vector3(0f, 0f, angle);
             playerBody.transform.rotation = Quaternion.Euler(angleVector);
-            Instantiate(projectile, player.transform.position, playerBody.transform.rotation);
+            Instantiate(projectile, player.transform.position, playerBody.transform.rotation, player.transform);
 
         }
     }

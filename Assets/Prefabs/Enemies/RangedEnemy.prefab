@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 897090692019126518}
   - component: {fileID: 22203457}
   - component: {fileID: 774076052}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackCoolDown: 2
   damage: 10
-  stopDistance: 20
+  stopDistance: 5
   audioSource: {fileID: 22203457}
   enemyBody: {fileID: 8768553053704823890}
   projectile: {fileID: 6884590823023950931, guid: d3754fb7922351449b10789a0022f78e,
@@ -252,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6485992968222226357}
   - component: {fileID: 4645892032111542809}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 8001529723822644230}
   - component: {fileID: 3099506181545298584}
   - component: {fileID: 2415252085229425036}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7478082405853201981}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7704447820781295692}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileForce: 20
+  projectileDamage: 10
 --- !u!50 &9044155847214379620
 Rigidbody2D:
   serializedVersion: 4
@@ -142,7 +143,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6884590823023950931}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 53f8a8888f73a454986856faa57986fd, type: 3}

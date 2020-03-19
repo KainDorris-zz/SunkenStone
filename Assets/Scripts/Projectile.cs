@@ -11,13 +11,26 @@ public class Projectile : MonoBehaviour
     [SerializeField] float projectileDamage = 10f;
     
     private Enemy enemycollision;
+    private Player playercollision;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileForce, ForceMode2D.Impulse);
-       StartCoroutine(PlayAudioClip());
+        if(gameObject.transform.root.GetComponent<Enemy>() is Enemy){
+            gameObject.layer = 9;
+            projectileForce = 3f;
+            projectileDamage = 1f;
+            gameObject.transform.parent = gameObject.transform;
+            
+        }
+        else //assumed to be a player projectile
+        {
+            gameObject.layer = 8;
+
+        }
+        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileForce, ForceMode2D.Impulse);
+        StartCoroutine(PlayAudioClip());
     }
 
     // Update is called once per frame
@@ -43,13 +56,26 @@ public class Projectile : MonoBehaviour
 
         if (col.gameObject.GetComponent<Enemy>())
         {
+            
             Impact();
             enemycollision = col.gameObject.GetComponent<Enemy>();
             enemycollision.TakeDamage(projectileDamage);
+            Destroy(gameObject, 2f);
+               
+        }
+        else if (col.gameObject.GetComponent<Player>())
+        {
+            
+            Impact();
+            playercollision = col.gameObject.GetComponent<Player>();
+            playercollision.TakeDamage(projectileDamage);
+            Destroy(gameObject, 2f);
             
         }
-
-        Destroy(gameObject, 2f);   
+        else
+        {
+            
+        }
     }
 
     

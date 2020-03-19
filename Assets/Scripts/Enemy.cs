@@ -32,10 +32,10 @@ public class Enemy : MonoBehaviour
     {
         if (_player != null)
         {
-            Vector2 playerTransform = _player.transform.position;
-            if (Vector2.Distance(transform.position, playerTransform) > stopDistance)
+            Vector3 playerTransform = _player.transform.position;
+            if (Vector3.Distance(transform.position, playerTransform) > stopDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position,
+                transform.position = Vector3.MoveTowards(transform.position,
                     playerTransform, speed * Time.deltaTime);
             }
             else
