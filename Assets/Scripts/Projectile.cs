@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     Rigidbody2D rb;
 
-    [SerializeField] float projectileForce = 5f;
+    [SerializeField] float projectileForce = 20f;
     [SerializeField] float projectileDamage = 10f;
     [SerializeField] float enemyProjectileDamage = 5f;
     [SerializeField] float enemyProjectileForce = 3f;

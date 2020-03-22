@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileForce: 20
   projectileDamage: 10
+  enemyProjectileDamage: 5
+  enemyProjectileForce: 3
 --- !u!50 &9044155847214379620
 Rigidbody2D:
   serializedVersion: 4
