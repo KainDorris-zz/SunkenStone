@@ -9,7 +9,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] float projectileForce = 5f;
     [SerializeField] float projectileDamage = 10f;
-    
+    [SerializeField] float enemyProjectileDamage = 5f;
+    [SerializeField] float enemyProjectileForce = 3f;
     private Enemy enemycollision;
     private Player playercollision;
 
@@ -19,8 +20,8 @@ public class Projectile : MonoBehaviour
     {
         if(gameObject.transform.root.GetComponent<Enemy>() is Enemy){
             gameObject.layer = 9;
-            projectileForce = 3f;
-            projectileDamage = 1f;
+            projectileForce = enemyProjectileForce;
+            projectileDamage = enemyProjectileDamage;
             gameObject.transform.parent = gameObject.transform;
             
         }
@@ -36,7 +37,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 3.0f);
+        Destroy(gameObject, 1.5f);
         
     }
 
@@ -48,11 +49,12 @@ public class Projectile : MonoBehaviour
 
     private void Impact()
     {
+        Destroy(GetComponent<CircleCollider2D>());
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<SpriteRenderer>());
     }
 
-    private void OnCollisionEnter2D(Collision2D col){
+    private void OnTriggerEnter2D(Collider2D col){
 
         if (col.gameObject.GetComponent<Enemy>())
         {
