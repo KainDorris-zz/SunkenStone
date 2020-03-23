@@ -117,7 +117,7 @@ public class TeamManager : MonoBehaviour
     public void Continue()
     {
         CreateTeam();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     
 }

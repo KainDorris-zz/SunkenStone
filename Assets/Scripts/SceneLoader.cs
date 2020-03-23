@@ -7,11 +7,11 @@ public class SceneLoader : MonoBehaviour
 {
 
     public void LoadGame(){
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("BuildTeam");
     }
 
     public void LoadOptions(){
-        SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("BuildTeam");
     }
     public void QuitGame(){
         Application.Quit();

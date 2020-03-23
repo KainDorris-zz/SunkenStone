@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2032910337721579493}
   - component: {fileID: 7421153621105840184}
   m_Layer: 8
-  m_Name: Fireball
+  m_Name: Icecicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6740231c6508dd640a589fa8b8c8b121, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc0420f7120ba3b4fb289ac5b33f04e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileForce: 20
   projectileDamage: 10
-  enemyProjectileDamage: 5
-  enemyProjectileForce: 3
 --- !u!50 &9044155847214379620
 Rigidbody2D:
   serializedVersion: 4
@@ -135,8 +133,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0021373036, y: 0.02502042}
-  m_Size: {x: 0.47684133, y: 0.5133543}
+  m_Offset: {x: -0.0021372586, y: -0.062375426}
+  m_Size: {x: 0.21945956, y: 0.3385626}
   m_Direction: 0
 --- !u!82 &7421153621105840184
 AudioSource:
