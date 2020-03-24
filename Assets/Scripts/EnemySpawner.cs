@@ -20,8 +20,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < roundsToSpawn; i++){
             for (int j = 0; j < enemies.Count; j++){
             
-            Instantiate(enemies[i], gameObject.transform);                       
-            Debug.Log("Spawning enemy" + enemies[j]);
+            Instantiate(enemies[i], transform.position, transform.rotation);                       
             yield return new WaitForSeconds(spawnTimer);
             }
 
