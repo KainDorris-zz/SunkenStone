@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float stopDistance = 1f;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
+
+    private SpriteRenderer enemySprite;
     private float _attackTimer;
 
     [SerializeField] public GameObject enemyBody;
@@ -21,11 +23,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        enemySprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         FollowPlayer();
+        Flip();
     }
 
     private void FollowPlayer()
@@ -46,6 +50,15 @@ public class Enemy : MonoBehaviour
                     _attackTimer = Time.time + attackCoolDown;
                 }
             }
+        }
+    }
+
+    private void Flip(){
+
+        if(transform.position.x < _player.transform.position.x){
+            enemySprite.flipX = false;
+        }else{
+            enemySprite.flipX = true;
         }
     }
 
