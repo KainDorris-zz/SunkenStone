@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
 
     public void LoadGame(){
+        
         SceneManager.LoadScene("BuildTeam");
     }
 
@@ -14,6 +15,12 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("BuildTeam");
     }
     public void QuitGame(){
+        Debug.Log("You quit the game");
         Application.Quit();
+    }
+
+    public void LoadMainMenu(){
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }
