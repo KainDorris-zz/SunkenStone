@@ -23,8 +23,10 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         enemySprite = gameObject.GetComponent<SpriteRenderer>();
+        Setup();
     }
 
     private void Update()
@@ -61,6 +63,18 @@ public class Enemy : MonoBehaviour
         }else{
             enemySprite.flipX = true;
         }
+    }
+
+    private void Setup(){
+        
+        health = enemyData.health;
+        speed = enemyData.speed;
+        attackSpeed = enemyData.attackSpeed;
+        attackCoolDown = enemyData.attackCoolDown;
+        damage = enemyData.damage;
+        stopDistance = enemyData.stopDistance;
+        enemySprite.sprite = enemyData.enemySprite;
+        
     }
 
     public virtual IEnumerator AttackRoutine()

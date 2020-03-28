@@ -234,12 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78755ed59b7b204eb19270072a86126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 4
+  enemyData: {fileID: 11400000, guid: 5fbe7841de7ee694ca2163cdd7e37b8d, type: 2}
   attackSpeed: 1
-  attackCoolDown: 2
-  damage: 10
-  stopDistance: 5
   audioSource: {fileID: 22203457}
   enemyBody: {fileID: 8768553053704823890}
   projectile: {fileID: 6884590823023950931, guid: d3754fb7922351449b10789a0022f78e,

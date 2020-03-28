@@ -6,11 +6,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "MonsterScriptableObject", menuName = "SunkenStone/MonsterScriptableObject", order = 0)]
 public class MonsterScriptableObject : ScriptableObject {
-    [SerializeField] private float health;
-    [SerializeField] private float speed;
+    [SerializeField] public float health;
+    [SerializeField] public float speed;
     [SerializeField] public float attackSpeed;
-    [SerializeField] private float attackCoolDown;
-    [SerializeField] private float damage;
-    [SerializeField] private float stopDistance;
+    [SerializeField] public float attackCoolDown;
+    [SerializeField] public float damage;
+    [SerializeField] public float stopDistance;
 
+    [SerializeField] public Sprite enemySprite;
+    
 }
