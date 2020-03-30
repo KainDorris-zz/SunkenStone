@@ -18,4 +18,5 @@ MonoBehaviour:
   attackCoolDown: 1
   damage: 5
   stopDistance: 5
-  sprite: {fileID: -6264939329670647835, guid: 0d3d5c04573187644998fbeab3d7512c, type: 3}
+  enemySprite: {fileID: -6264939329670647835, guid: 0d3d5c04573187644998fbeab3d7512c,
+    type: 3}
