@@ -5,13 +5,14 @@ using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    [SerializeField] private float health;
-    [SerializeField] private float speed = 4f;
-    [SerializeField] public float attackSpeed = 1;
-    [SerializeField] private float attackCoolDown = 2f;
-    [SerializeField] private float damage = 10f;
-    [SerializeField] private float stopDistance = 1f;
+{   
+    [SerializeField] public MonsterScriptableObject enemyData;
+    private float health;
+    private float speed;
+    public float attackSpeed;
+    private float attackCoolDown;
+    private float damage;
+    private float stopDistance;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
 
@@ -22,8 +23,10 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         enemySprite = gameObject.GetComponent<SpriteRenderer>();
+        Setup();
     }
 
     private void Update()
@@ -60,6 +63,18 @@ public class Enemy : MonoBehaviour
         }else{
             enemySprite.flipX = true;
         }
+    }
+
+    private void Setup(){
+        
+        health = enemyData.health;
+        speed = enemyData.speed;
+        attackSpeed = enemyData.attackSpeed;
+        attackCoolDown = enemyData.attackCoolDown;
+        damage = enemyData.damage;
+        stopDistance = enemyData.stopDistance;
+        enemySprite.sprite = enemyData.enemySprite;
+        
     }
 
     public virtual IEnumerator AttackRoutine()
