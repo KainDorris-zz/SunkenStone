@@ -7,17 +7,24 @@ public class Projectile : MonoBehaviour
 
     Rigidbody2D rb;
 
-    [SerializeField] float projectileForce = 20f;
-    [SerializeField] float projectileDamage = 10f;
-    [SerializeField] float enemyProjectileDamage = 5f;
-    [SerializeField] float enemyProjectileForce = 3f;
+    [SerializeField] public ProjectileScriptableObject projectileData;
+
+    private float projectileForce;
+    private float projectileDamage;
+    private float enemyProjectileDamage;
+    private float enemyProjectileForce;
+    private DamageType damageType;
+    private SpriteRenderer spriteRenderer;
     private Enemy enemycollision;
     private Player playercollision;
+    private bool hasImpactedSomething = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        Setup();
         if(gameObject.transform.root.GetComponent<Enemy>() is Enemy){
             gameObject.layer = 9;
             projectileForce = enemyProjectileForce;
@@ -47,37 +54,83 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(audio.clip.length);
     }
 
-    private void Impact()
-    {
+
+    private void disableComponents(){
+        
         Destroy(GetComponent<CircleCollider2D>());
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<SpriteRenderer>());
+
     }
 
-    private void OnTriggerEnter2D(Collider2D col){
-
+    private void Impact(Collider2D col){
         if (col.gameObject.GetComponent<Enemy>())
         {
-            
-            Impact();
+            hasImpactedSomething = true;
+            disableComponents();
             enemycollision = col.gameObject.GetComponent<Enemy>();
-            enemycollision.TakeDamage(projectileDamage);
+            if(CheckWeaknesses(enemycollision.GetWeaknesses())){
+                enemycollision.TakeDamage(projectileDamage * 2);
+                //todo implement critical audio clip
+                Debug.Log("Critcial!" + projectileDamage * 2);
+            }
+            else if(CheckResistances(enemycollision.GetResistances())){
+                enemycollision.TakeDamage(projectileDamage / 0.5f);
+            }
+            else{
+                enemycollision.TakeDamage(projectileDamage);
+            }
             Destroy(gameObject, 2f);
-               
+            
         }
         else if (col.gameObject.GetComponent<Player>())
         {
-            
-            Impact();
+            hasImpactedSomething = true;
+            disableComponents();
             playercollision = col.gameObject.GetComponent<Player>();
             playercollision.TakeDamage(projectileDamage);
             Destroy(gameObject, 2f);
             
         }
-        else
-        {
-            
+    }
+
+
+    private bool CheckWeaknesses(List<DamageType> weaknesses){
+        foreach(DamageType weakness in weaknesses){
+            if(weakness == damageType){
+                return true;
+            }
         }
+        return false;
+    }
+
+    private bool CheckResistances(List<DamageType> resistances){
+        foreach(DamageType resistance in resistances){
+            if (resistance == damageType){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+
+    private void OnTriggerEnter2D(Collider2D col){
+        if (hasImpactedSomething == false)
+        {
+            Impact(col);
+        }
+    }
+
+    private void Setup(){
+        projectileForce = projectileData.projectileForce;
+        projectileDamage = projectileData.projectileDamage;
+        enemyProjectileDamage = projectileData.enemyProjectileDamage;
+        enemyProjectileForce = projectileData.enemyProjectileForce;
+        spriteRenderer.sprite = projectileData.projectileSprite;
+        damageType = projectileData.damageTypes;
+        
+
     }
 
     

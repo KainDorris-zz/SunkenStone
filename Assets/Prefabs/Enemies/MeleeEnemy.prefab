@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 84f16d2fb2eaab74eb1417a639f3b4ce, type: 2}
   attackSpeed: 1
+  weaknesses: 
+  resistances: 
   audioSource: {fileID: 4261300930648472842}
   enemyBody: {fileID: 5913578406454019368}
 --- !u!58 &897090692019126519
