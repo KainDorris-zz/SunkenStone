@@ -149,7 +149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &589987459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 227796638785327281, guid: c835e2b3ddff53a4dba9acc5bf35d62b, type: 3}
-  - {fileID: 227796638785327281, guid: c835e2b3ddff53a4dba9acc5bf35d62b, type: 3}
+  - {fileID: 227796638785327281, guid: 3f01a23b505ff454f89c5dea59baaf11, type: 3}
+  - {fileID: 227796638785327281, guid: 3f01a23b505ff454f89c5dea59baaf11, type: 3}
   - {fileID: 227796638785327281, guid: 3f01a23b505ff454f89c5dea59baaf11, type: 3}
   roundsToSpawn: 1
   spawnTimer: 5

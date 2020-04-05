@@ -19,4 +19,5 @@ MonoBehaviour:
   projectileSprite: {fileID: 21300000, guid: 6740231c6508dd640a589fa8b8c8b121, type: 3}
   damageTypes: 1
   damageSound: {fileID: 8300000, guid: 53f8a8888f73a454986856faa57986fd, type: 3}
-  citicalSound: {fileID: 8300000, guid: e3d0a3a3c6407ac48a7d2dd12954d613, type: 3}
+  criticalSound: {fileID: 8300000, guid: ecbc908db0663c4429c29fabf835f212, type: 3}
+  weakSound: {fileID: 8300000, guid: 6d07142ab9c3f7f49a7c66bfe8719778, type: 3}

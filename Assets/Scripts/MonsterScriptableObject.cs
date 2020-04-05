@@ -10,6 +10,8 @@ public class MonsterScriptableObject : ScriptableObject {
     [SerializeField] public float attackCoolDown;
     [SerializeField] public float damage;
     [SerializeField] public float stopDistance;
+    [SerializeField] public List<DamageType> weaknesses;
+    [SerializeField] public List<DamageType> resistances;
 
     [SerializeField] public Sprite enemySprite;
     

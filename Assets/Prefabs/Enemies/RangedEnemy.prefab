@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 5fbe7841de7ee694ca2163cdd7e37b8d, type: 2}
   attackSpeed: 1
-  weaknesses: 
+  weaknesses: 01000000
   resistances: 
   audioSource: {fileID: 22203457}
   enemyBody: {fileID: 8768553053704823890}

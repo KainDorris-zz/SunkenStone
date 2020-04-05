@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour
     private float attackCoolDown;
     private float damage;
     private float stopDistance;
-    [SerializeField] private List<DamageType> weaknesses;
-    [SerializeField] private List<DamageType> resistances;
+    private List<DamageType> weaknesses;
+    private List<DamageType> resistances;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
 
@@ -76,6 +76,8 @@ public class Enemy : MonoBehaviour
         damage = enemyData.damage;
         stopDistance = enemyData.stopDistance;
         enemySprite.sprite = enemyData.enemySprite;
+        weaknesses = enemyData.weaknesses;
+        resistances = enemyData.resistances;
         
     }
 

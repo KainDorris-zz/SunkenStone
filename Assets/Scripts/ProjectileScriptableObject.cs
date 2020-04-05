@@ -13,6 +13,7 @@ public class ProjectileScriptableObject : ScriptableObject {
     [SerializeField] public Sprite projectileSprite;
     [SerializeField] public DamageType damageTypes;
     [SerializeField] public AudioClip damageSound;
-    [SerializeField] public AudioClip citicalSound;
+    [SerializeField] public AudioClip criticalSound;
+    [SerializeField] public AudioClip weakSound;
 
 }

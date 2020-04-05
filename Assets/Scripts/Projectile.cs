@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Enemy enemycollision;
     private Player playercollision;
+    [SerializeField] private AudioSource audioSource;
     private bool hasImpactedSomething = false;
 
 
@@ -69,12 +70,15 @@ public class Projectile : MonoBehaviour
             hasImpactedSomething = true;
             disableComponents();
             enemycollision = col.gameObject.GetComponent<Enemy>();
-            if(CheckWeaknesses(enemycollision.GetWeaknesses())){
+            if(CheckWeaknessesOrResistances(enemycollision.GetWeaknesses())){
+                audioSource.clip = projectileData.criticalSound;
+                StartCoroutine(PlayAudioClip());
                 enemycollision.TakeDamage(projectileDamage * 2);
-                //todo implement critical audio clip
-                Debug.Log("Critcial!" + projectileDamage * 2);
+                
             }
-            else if(CheckResistances(enemycollision.GetResistances())){
+            else if(CheckWeaknessesOrResistances(enemycollision.GetResistances())){
+                audioSource.clip = projectileData.weakSound;
+                StartCoroutine(PlayAudioClip());
                 enemycollision.TakeDamage(projectileDamage / 0.5f);
             }
             else{
@@ -95,18 +99,9 @@ public class Projectile : MonoBehaviour
     }
 
 
-    private bool CheckWeaknesses(List<DamageType> weaknesses){
-        foreach(DamageType weakness in weaknesses){
-            if(weakness == damageType){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool CheckResistances(List<DamageType> resistances){
-        foreach(DamageType resistance in resistances){
-            if (resistance == damageType){
+    private bool CheckWeaknessesOrResistances(List<DamageType> weaknessesOrResistances){
+        foreach(DamageType weaknessOrResistance in weaknessesOrResistances){
+            if(weaknessOrResistance == damageType){
                 return true;
             }
         }
