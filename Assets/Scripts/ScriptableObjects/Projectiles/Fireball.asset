@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileForce: 20
   projectileDamage: 10
+  criticalMultiplier: 2
+  weaknessMultiplier: 0.5
   enemyProjectileForce: 0
   enemyProjectileDamage: 0
   projectileSprite: {fileID: 21300000, guid: 6740231c6508dd640a589fa8b8c8b121, type: 3}

@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
     private float projectileDamage;
     private float enemyProjectileDamage;
     private float enemyProjectileForce;
+    private float criticalMultiplier;
+    private float weaknessMultiplier;
     private DamageType damageType;
     private SpriteRenderer spriteRenderer;
     private Enemy enemycollision;
@@ -73,13 +75,13 @@ public class Projectile : MonoBehaviour
             if(CheckWeaknessesOrResistances(enemycollision.GetWeaknesses())){
                 audioSource.clip = projectileData.criticalSound;
                 StartCoroutine(PlayAudioClip());
-                enemycollision.TakeDamage(projectileDamage * 2);
+                enemycollision.TakeDamage(projectileDamage * criticalMultiplier);
                 
             }
             else if(CheckWeaknessesOrResistances(enemycollision.GetResistances())){
                 audioSource.clip = projectileData.weakSound;
                 StartCoroutine(PlayAudioClip());
-                enemycollision.TakeDamage(projectileDamage / 0.5f);
+                enemycollision.TakeDamage(projectileDamage / weaknessMultiplier);
             }
             else{
                 enemycollision.TakeDamage(projectileDamage);
@@ -124,6 +126,8 @@ public class Projectile : MonoBehaviour
         enemyProjectileForce = projectileData.enemyProjectileForce;
         spriteRenderer.sprite = projectileData.projectileSprite;
         damageType = projectileData.damageTypes;
+        criticalMultiplier = projectileData.criticalMultiplier;
+        weaknessMultiplier = projectileData.weaknessMultiplier;
         
 
     }

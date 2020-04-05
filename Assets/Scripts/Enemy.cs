@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private List<DamageType> resistances;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
+    
 
     private SpriteRenderer enemySprite;
     private float _attackTimer;
