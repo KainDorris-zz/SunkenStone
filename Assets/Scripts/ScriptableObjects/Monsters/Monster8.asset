@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fffecc56810c24dae5886f0f91ff31, type: 3}
+  m_Name: Monster8
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 10
+  attackSpeed: 0
+  attackCoolDown: 0
+  damage: 0
+  stopDistance: 0
+  sprite: {fileID: 21300000, guid: 946a9c51d708ee64781c9356b2c8896e, type: 2}
+  name: Monster 8
+  description: This is a monster
+  isCollected: 1

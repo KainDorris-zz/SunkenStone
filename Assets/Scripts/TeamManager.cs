@@ -12,20 +12,14 @@ public class TeamManager : MonoBehaviour
     [SerializeField] private Sprite defaultImage;
     [SerializeField] private List<Image> teamSlots;
     [SerializeField] private List<Image> profiles;
-    [SerializeField] private MonsterDatabase monsterDatabase;
-    [SerializeField] private List<Monster> minions;
-    public static List<Monster> PlayerTeam;
+    [SerializeField] private MonsterDatabaseScriptableObject monsterDatabase;
+    [SerializeField] private List<MonsterScriptableObject> minions;
+    public static List<MonsterScriptableObject> PlayerTeam;
     private int _profileIndex = 0;
     
     private void Awake()
     {
-        if (monsterDatabase == null)
-        {
-            monsterDatabase = FindObjectOfType<MonsterDatabase>();
-            CheckForNullError(monsterDatabase, "Monster Data Base is Null at Team Manager.");
-        }
-        monsterDatabase.BuildMonsterDatabase();
-        minions = monsterDatabase.GetMonsters().Where(m => m.GetIsCollected()).ToList();
+        minions = monsterDatabase.GetCollected();
         SetSlotDefaults();
         InitializeProfiles();
     }
@@ -40,7 +34,7 @@ public class TeamManager : MonoBehaviour
     {
         for (int i = 0; i < profiles.Count; i++)
         {
-            profiles[i].sprite = minions[i].GetSprite();
+            profiles[i].sprite = minions[i].sprite;
         }
     }
 
@@ -54,7 +48,7 @@ public class TeamManager : MonoBehaviour
 
     private void CreateTeam()
     {
-        List<Monster> newMinions = new List<Monster>();
+        List<MonsterScriptableObject> newMinions = new List<MonsterScriptableObject>();
 
         foreach (Image slot in teamSlots)
         {
@@ -69,7 +63,7 @@ public class TeamManager : MonoBehaviour
         int minionStart = _profileIndex;
         for (int i = 0; i < profiles.Count; i++)
         {
-            profiles[i].sprite = minions[minionStart].GetSprite();
+            profiles[i].sprite = minions[minionStart].sprite;
             minionStart++;
         }
     }

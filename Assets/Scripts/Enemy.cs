@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         attackCoolDown = enemyData.attackCoolDown;
         damage = enemyData.damage;
         stopDistance = enemyData.stopDistance;
-        enemySprite.sprite = enemyData.enemySprite;
+        enemySprite.sprite = enemyData.sprite;
         
     }
 
