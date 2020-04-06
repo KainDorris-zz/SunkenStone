@@ -97,10 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdc51534b4a9b2429fc07546970815d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileForce: 20
-  projectileDamage: 10
-  enemyProjectileDamage: 5
-  enemyProjectileForce: 3
+  projectileData: {fileID: 11400000, guid: 7205a7d706e566a469850eec43cd7921, type: 2}
+  audioSource: {fileID: 7421153621105840184}
 --- !u!50 &9044155847214379620
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +143,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6884590823023950931}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 53f8a8888f73a454986856faa57986fd, type: 3}

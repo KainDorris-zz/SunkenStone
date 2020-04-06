@@ -7,17 +7,27 @@ public class Projectile : MonoBehaviour
 
     Rigidbody2D rb;
 
-    [SerializeField] float projectileForce = 20f;
-    [SerializeField] float projectileDamage = 10f;
-    [SerializeField] float enemyProjectileDamage = 5f;
-    [SerializeField] float enemyProjectileForce = 3f;
+    [SerializeField] public ProjectileScriptableObject projectileData;
+
+    private float projectileForce;
+    private float projectileDamage;
+    private float enemyProjectileDamage;
+    private float enemyProjectileForce;
+    private float criticalMultiplier;
+    private float weaknessMultiplier;
+    private DamageType damageType;
+    private SpriteRenderer spriteRenderer;
     private Enemy enemycollision;
     private Player playercollision;
+    [SerializeField] private AudioSource audioSource;
+    private bool hasImpactedSomething = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        Setup();
         if(gameObject.transform.root.GetComponent<Enemy>() is Enemy){
             gameObject.layer = 9;
             projectileForce = enemyProjectileForce;
@@ -47,37 +57,79 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(audio.clip.length);
     }
 
-    private void Impact()
-    {
+
+    private void disableComponents(){
+        
         Destroy(GetComponent<CircleCollider2D>());
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<SpriteRenderer>());
+
     }
 
-    private void OnTriggerEnter2D(Collider2D col){
-
+    private void Impact(Collider2D col){
         if (col.gameObject.GetComponent<Enemy>())
         {
-            
-            Impact();
+            hasImpactedSomething = true;
+            disableComponents();
             enemycollision = col.gameObject.GetComponent<Enemy>();
-            enemycollision.TakeDamage(projectileDamage);
+            if(CheckWeaknessesOrResistances(enemycollision.GetWeaknesses())){
+                audioSource.clip = projectileData.criticalSound;
+                StartCoroutine(PlayAudioClip());
+                enemycollision.TakeDamage(projectileDamage * criticalMultiplier);
+                
+            }
+            else if(CheckWeaknessesOrResistances(enemycollision.GetResistances())){
+                audioSource.clip = projectileData.weakSound;
+                StartCoroutine(PlayAudioClip());
+                enemycollision.TakeDamage(projectileDamage / weaknessMultiplier);
+            }
+            else{
+                enemycollision.TakeDamage(projectileDamage);
+            }
             Destroy(gameObject, 2f);
-               
+            
         }
         else if (col.gameObject.GetComponent<Player>())
         {
-            
-            Impact();
+            hasImpactedSomething = true;
+            disableComponents();
             playercollision = col.gameObject.GetComponent<Player>();
             playercollision.TakeDamage(projectileDamage);
             Destroy(gameObject, 2f);
             
         }
-        else
-        {
-            
+    }
+
+
+    private bool CheckWeaknessesOrResistances(List<DamageType> weaknessesOrResistances){
+        foreach(DamageType weaknessOrResistance in weaknessesOrResistances){
+            if(weaknessOrResistance == damageType){
+                return true;
+            }
         }
+        return false;
+    }
+    
+    
+
+    private void OnTriggerEnter2D(Collider2D col){
+        if (hasImpactedSomething == false)
+        {
+            Impact(col);
+        }
+    }
+
+    private void Setup(){
+        projectileForce = projectileData.projectileForce;
+        projectileDamage = projectileData.projectileDamage;
+        enemyProjectileDamage = projectileData.enemyProjectileDamage;
+        enemyProjectileForce = projectileData.enemyProjectileForce;
+        spriteRenderer.sprite = projectileData.projectileSprite;
+        damageType = projectileData.damageTypes;
+        criticalMultiplier = projectileData.criticalMultiplier;
+        weaknessMultiplier = projectileData.weaknessMultiplier;
+        
+
     }
 
     

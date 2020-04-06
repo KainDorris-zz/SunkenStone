@@ -18,5 +18,7 @@ MonoBehaviour:
   attackCoolDown: 1
   damage: 5
   stopDistance: 5
+  weaknesses: 01000000
+  resistances: 
   enemySprite: {fileID: -6264939329670647835, guid: 0d3d5c04573187644998fbeab3d7512c,
     type: 3}

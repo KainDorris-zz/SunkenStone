@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
-[CreateAssetMenu(fileName = "MonsterScriptableObject", menuName = "SunkenStone/MonsterScriptableObject", order = 0)]
+[CreateAssetMenu(fileName = "MonsterScriptableObject", menuName = "SunkenStone/Monsters/MonsterScriptableObject", order = 0)]
 public class MonsterScriptableObject : ScriptableObject {
     [Header("Monster Properties")]
     [SerializeField] public float health;
@@ -14,6 +12,9 @@ public class MonsterScriptableObject : ScriptableObject {
     [SerializeField] public float damage;
     [SerializeField] public float stopDistance;
     [SerializeField] public Sprite sprite;
+    [SerializeField] public List<DamageType> weaknesses;
+    [SerializeField] public List<DamageType> resistances;
+
 
     [Header("Minion Properties")]
     [SerializeField] public string name;

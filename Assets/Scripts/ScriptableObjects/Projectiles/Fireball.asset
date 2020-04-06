@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1943f73eb83d5a34e9c5315f797da8f9, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  projectileForce: 20
+  projectileDamage: 10
+  criticalMultiplier: 2
+  weaknessMultiplier: 0.5
+  enemyProjectileForce: 0
+  enemyProjectileDamage: 0
+  projectileSprite: {fileID: 21300000, guid: 6740231c6508dd640a589fa8b8c8b121, type: 3}
+  damageTypes: 1
+  damageSound: {fileID: 8300000, guid: 53f8a8888f73a454986856faa57986fd, type: 3}
+  criticalSound: {fileID: 8300000, guid: ecbc908db0663c4429c29fabf835f212, type: 3}
+  weakSound: {fileID: 8300000, guid: 6d07142ab9c3f7f49a7c66bfe8719778, type: 3}
