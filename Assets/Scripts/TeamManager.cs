@@ -92,7 +92,10 @@ public class TeamManager : MonoBehaviour
         // Loop over each team slot until you find one that is empty and add the that index in the list.
         foreach (Image slot in teamSlots)
         {
-            if (slot.sprite == defaultImage)
+            // Check to see current sprite is already contained within selected profiles.
+            var currentSprites = teamSlots.Select(s => s.sprite).ToList();
+            
+            if (slot.sprite == defaultImage && !currentSprites.Contains(profiles[slotIndex].sprite))
             {
                 slot.sprite = profiles[slotIndex].sprite;
                 return;
