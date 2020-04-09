@@ -9,6 +9,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="AimingReticule.cs" t="Include" />
+          <e p="DamageTypeEnums.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="EnemyHealthBar.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
