@@ -76,7 +76,8 @@ public class Enemy : MonoBehaviour
         attackCoolDown = enemyData.attackCoolDown;
         damage = enemyData.damage;
         stopDistance = enemyData.stopDistance;
-        enemySprite.sprite = enemyData.enemySprite;
+        TeamManagementRevamp
+        enemySprite.sprite = enemyData.sprite;
         weaknesses = enemyData.weaknesses;
         resistances = enemyData.resistances;
         

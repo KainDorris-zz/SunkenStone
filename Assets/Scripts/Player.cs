@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 5f;
     
-    private List<Monster> _minions;
+    private List<MonsterScriptableObject> _minions;
     private int _level;
     private int _gold;
 
@@ -32,8 +32,8 @@ public class Player : MonoBehaviour
     public void SwapMinions(int slot)
     {
         if (_minions?[slot] == null) return; // This can likely be removed after game flow is finished.
-        Monster minion = _minions[slot];
-        Sprite minionSprite = minion.GetSprite();
+        MonsterScriptableObject minion = _minions[slot];
+        Sprite minionSprite = minion.sprite;
         spriteRenderer.sprite = minionSprite;
     }
     
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         return _maxHealth;
     }
 
-    public List<Monster> GetMinions()
+    public List<MonsterScriptableObject> GetMinions()
     {
         return _minions;
     }

@@ -7,7 +7,7 @@ public class PlayerData
 {
     public int playerLevel;
     public int playerGold;
-    public List<Monster> playerMinions;
+    public List<MonsterScriptableObject> playerMinions;
     public ArrayList playerProgression;
 
     //Constructor, takes data from save system and jams it in there
