@@ -13,8 +13,11 @@ public class Enemy : MonoBehaviour
     private float attackCoolDown;
     private float damage;
     private float stopDistance;
+    private List<DamageType> weaknesses;
+    private List<DamageType> resistances;
     [SerializeField] private AudioSource audioSource;
     private Player _player;
+    
 
     private SpriteRenderer enemySprite;
     private float _attackTimer;
@@ -73,7 +76,10 @@ public class Enemy : MonoBehaviour
         attackCoolDown = enemyData.attackCoolDown;
         damage = enemyData.damage;
         stopDistance = enemyData.stopDistance;
+        TeamManagementRevamp
         enemySprite.sprite = enemyData.sprite;
+        weaknesses = enemyData.weaknesses;
+        resistances = enemyData.resistances;
         
     }
 
@@ -107,5 +113,13 @@ public class Enemy : MonoBehaviour
 
     public Vector3 GetPlayerPosition(){
         return _player.transform.position;
+    }
+
+    public List<DamageType> GetResistances(){
+        return resistances;
+    }
+
+    public List<DamageType> GetWeaknesses(){
+        return weaknesses;
     }
 }
