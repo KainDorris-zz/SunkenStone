@@ -14,6 +14,7 @@ public class RangedEnemy : Enemy
     
     public override IEnumerator AttackRoutine()
     {
+        
         float animationPercent = 0;
         gameObject.GetComponent<AudioSource>().Play();
         Shoot();
@@ -26,7 +27,24 @@ public class RangedEnemy : Enemy
         gameObject.GetComponent<AudioSource>().Stop();
     }
 
+    public override IEnumerator SpecialRoutine()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            float animationPercent = 0;
+            gameObject.GetComponent<AudioSource>().Play();
 
+            Shoot();
+            
+            while (animationPercent <= 1)
+            {
+                animationPercent += Time.deltaTime * gameObject.GetComponent<Enemy>().attackSpeed;
+                // Trigger Animation here.
+                yield return null;
+            }
+            gameObject.GetComponent<AudioSource>().Stop();
+        }
+    }
 
     private void Shoot(){
             playerPos = GetPlayerPosition();

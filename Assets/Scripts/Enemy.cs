@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = System.Random;
 
 public class Enemy : MonoBehaviour
 {   
@@ -11,16 +12,17 @@ public class Enemy : MonoBehaviour
     private float speed;
     public float attackSpeed;
     private float attackCoolDown;
-    private float damage;
+    public float damage;
     private float stopDistance;
     private List<DamageType> weaknesses;
     private List<DamageType> resistances;
-    [SerializeField] private AudioSource audioSource;
-    private Player _player;
+    [SerializeField] public AudioSource audioSource;
+    public Player _player;
     
 
-    private SpriteRenderer enemySprite;
+    public SpriteRenderer enemySprite;
     private float _attackTimer;
+    private Random _dice = new Random();
 
     [SerializeField] public GameObject enemyBody;
 
@@ -52,7 +54,17 @@ public class Enemy : MonoBehaviour
             {
                 if (Time.time >= _attackTimer)
                 {
-                    StartCoroutine(AttackRoutine());
+                    // on percentage
+                    if (_dice.Next(1, 7) > 5)
+                    {
+                       StartCoroutine(SpecialRoutine()); 
+                    }
+                    else
+                    {
+                       StartCoroutine(AttackRoutine()); 
+                    }
+                    
+                    
                     _attackTimer = Time.time + attackCoolDown;
                 }
             }
@@ -95,7 +107,21 @@ public class Enemy : MonoBehaviour
         }
         audioSource.Stop();
     }
-
+    
+    public virtual IEnumerator SpecialRoutine()
+    {
+        float animationPercent = 0;
+        audioSource.Play();
+        _player.TakeDamage(damage);
+        while (animationPercent <= 1)
+        {
+            animationPercent += Time.deltaTime * attackSpeed;
+            // Trigger Animation here.
+            yield return null;
+        }
+        audioSource.Stop();
+    }
+    
     public void TakeDamage(float dmg)
     {
         health -= dmg;

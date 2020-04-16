@@ -14,7 +14,12 @@ public class MonsterScriptableObject : ScriptableObject {
     [SerializeField] public Sprite sprite;
     [SerializeField] public List<DamageType> weaknesses;
     [SerializeField] public List<DamageType> resistances;
-
+    
+    [Header("Monster Specials")]
+    [SerializeField] public float specialAttackSpeedModifier;
+    [SerializeField] public float specialAttackFrequency;
+    [SerializeField] public float specialAttackMultiplier;
+    [SerializeField] public float specialDamageModifier;
 
     [Header("Minion Properties")]
     [SerializeField] public string name;
