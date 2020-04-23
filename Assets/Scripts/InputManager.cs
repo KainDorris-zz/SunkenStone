@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private ResourceManager _resourceManager;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject specialProjectile;
     [SerializeField] private GameObject playerBody;
 
     public Camera cam;
@@ -18,7 +22,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         if (player == null) player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        
+        _resourceManager = GameObject.Find("Canvas").GetComponent<ResourceManager>();
     }
 
     // Update is called once per frame
@@ -57,8 +61,24 @@ public class InputManager : MonoBehaviour
             Vector3 angleVector = new Vector3(0f, 0f, angle);
             playerBody.transform.rotation = Quaternion.Euler(angleVector);
             Instantiate(projectile, player.transform.position, playerBody.transform.rotation, player.transform);
-
         }
+        else if (Input.GetButtonDown("Fire2") && _resourceManager.GetResourceCount() > 0)
+        {
+            _resourceManager.RemoveResource();
+            ShootLogic();
+        }
+    }
+    
+    
+
+    private void ShootLogic()
+    {
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 lookDir = playerBody.transform.position - mousePos;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
+        Vector3 angleVector = new Vector3(0f, 0f, angle);
+        playerBody.transform.rotation = Quaternion.Euler(angleVector);
+        Instantiate(specialProjectile, player.transform.position, playerBody.transform.rotation, player.transform);
     }
 
 

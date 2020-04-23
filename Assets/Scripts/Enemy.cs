@@ -8,6 +8,7 @@ using Random = System.Random;
 public class Enemy : MonoBehaviour
 {   
     [SerializeField] public MonsterScriptableObject enemyData;
+    [SerializeField] private ResourceManager _resourceManager;
     private float health;
     private float speed;
     public float attackSpeed;
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
     private List<DamageType> resistances;
     [SerializeField] public AudioSource audioSource;
     public Player _player;
-    
+
 
     public SpriteRenderer enemySprite;
     private float _attackTimer;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _resourceManager = GameObject.Find("Canvas").GetComponent<ResourceManager>();
         enemySprite = gameObject.GetComponent<SpriteRenderer>();
         Setup();
     }
@@ -128,6 +130,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            _resourceManager.AddResource(); // TODO: Move this when we add in environmental hazards.
             Destroy(gameObject);
         }
     }

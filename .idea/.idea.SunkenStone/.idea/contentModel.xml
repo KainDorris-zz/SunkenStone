@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\jrem9\.Rider2019.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\jrem9\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\jrem9\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_SunkenStone.-228782420.00" t="ExcludeRecursive" />
+    <e p="C:\Users\jrem9\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jrem9\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_SunkenStone.-228782420.00" t="ExcludeRecursive" />
+    <e p="C:\Users\jrem9\AppData\Roaming\JetBrains\Rider2020.1\scratches" t="IncludeRecursive" />
     <e p="C:\Users\jrem9\Desktop\SunkenStone" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -27,6 +27,7 @@
           <e p="Projectile.cs" t="Include" />
           <e p="ProjectileScriptableObject.cs" t="Include" />
           <e p="RangedEnemy.cs" t="Include" />
+          <e p="ResourceManager.cs" t="Include" />
           <e p="SaveSystem.cs" t="Include" />
           <e p="SceneLoader.cs" t="Include" />
           <e p="TeamManager.cs" t="Include" />

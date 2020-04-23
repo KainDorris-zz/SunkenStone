@@ -12,11 +12,9 @@ public class Player : MonoBehaviour
     private List<MonsterScriptableObject> _minions;
     private int _level;
     private int _gold;
-
     private float _currentHealth;
-
     private float _maxHealth = 100;
-
+    
     private void Awake()
     {
        _minions = TeamManager.PlayerTeam;
