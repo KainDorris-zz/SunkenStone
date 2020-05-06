@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 1.5f);
+        
         
     }
 
@@ -86,7 +86,7 @@ public class Projectile : MonoBehaviour
             else{
                 enemycollision.TakeDamage(projectileDamage);
             }
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 1f);
             
         }
         else if (col.gameObject.GetComponent<Player>())
@@ -95,8 +95,13 @@ public class Projectile : MonoBehaviour
             disableComponents();
             playercollision = col.gameObject.GetComponent<Player>();
             playercollision.TakeDamage(projectileDamage);
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 1f);
             
+        }
+
+        else{
+            hasImpactedSomething = true;
+            Destroy(gameObject, 0.1f);
         }
     }
 

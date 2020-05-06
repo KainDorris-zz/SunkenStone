@@ -8,9 +8,13 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject playerBody;
 
+    [SerializeField] private float playerMoveSpeed;
+    [SerializeField] public Rigidbody2D rb2d;
+
     public Camera cam;
 
     private Vector3 mousePos;
+    private Vector2 movement;
 
 
     
@@ -31,22 +35,28 @@ public class InputManager : MonoBehaviour
         
 
     }
+
+    private void FixedUpdate() {
+        rb2d.MovePosition(rb2d.position + movement * playerMoveSpeed * Time.fixedDeltaTime);
+    }
     
     private void PlayerMovement()
     {
-        float speed = player.GetSpeed();
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        // float speed = player.GetSpeed();
+        // float horizontalInput = Input.GetAxis("Horizontal");
+        // float verticalInput = Input.GetAxis("Vertical");
+        // Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-        if (horizontalInput != 0 && verticalInput != 0)
-        {
-            player.transform.Translate(direction * ((speed * 0.7f ) * Time.deltaTime));
-        }
-        else
-        {
-            player.transform.Translate(direction * (speed * Time.deltaTime));
-        }
+        // if (horizontalInput != 0 && verticalInput != 0)
+        // {
+        //     player.transform.Translate(direction * ((speed * 0.7f ) * Time.deltaTime));
+        // }
+        // else
+        // {
+        //     player.transform.Translate(direction * (speed * Time.deltaTime));
+        // }
     }
 
     private void Shoot(){
