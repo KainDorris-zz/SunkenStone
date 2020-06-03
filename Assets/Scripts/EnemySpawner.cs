@@ -9,9 +9,20 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnTimer = 5f;
     //TODO Randomize spawning
     //[SerializeField, Tooltip("Spawn enemies randomly from list")] bool randomSpawning = false;
+    [SerializeField] bool hasSpawned = false;
+    [SerializeField] GameObject spawnPoint;
     
-    private void Start() {
-        StartCoroutine("SpawnEnemies");
+    
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.GetComponent<Player>()){
+            if (hasSpawned == false){
+                hasSpawned = true;
+                StartCoroutine(SpawnEnemies());
+            }
+        }
+        
     }
 
     //Loop through N times where N= rounds to spawn
@@ -20,11 +31,13 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < roundsToSpawn; i++){
             for (int j = 0; j < enemies.Count; j++){
             
-            Instantiate(enemies[i], transform.position, transform.rotation);                       
+            Instantiate(enemies[i], spawnPoint.transform.position, spawnPoint.transform.rotation);                       
             yield return new WaitForSeconds(spawnTimer);
             }
 
         }
         
     }
+
+
 }
