@@ -113,7 +113,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227796638785327281}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -236,8 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 5fbe7841de7ee694ca2163cdd7e37b8d, type: 2}
   attackSpeed: 1
-  weaknesses: 01000000
-  resistances: 
   audioSource: {fileID: 22203457}
   enemyBody: {fileID: 8768553053704823890}
   projectile: {fileID: 6884590823023950931, guid: d3754fb7922351449b10789a0022f78e,
@@ -478,6 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7704447820781295692}
+  - component: {fileID: 698401654733816880}
   m_Layer: 11
   m_Name: EnemyBody
   m_TagString: Untagged
@@ -499,3 +498,19 @@ Transform:
   m_Father: {fileID: 5756998041100726282}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &698401654733816880
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768553053704823890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0011735201, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.10568686

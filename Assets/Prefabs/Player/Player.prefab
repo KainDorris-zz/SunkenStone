@@ -43,7 +43,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.30598074, g: 0.3190637, b: 0.33962262, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   projectile: {fileID: 6884590823023950931, guid: e48bc0ef603f79c4692ea993aed7cda2,
     type: 3}
   playerBody: {fileID: 1331724592}
+  playerMoveSpeed: 5
+  rb2d: {fileID: 1770966180}
   cam: {fileID: 605058105}
 --- !u!1 &1331724592
 GameObject:
@@ -144,6 +146,7 @@ GameObject:
   - component: {fileID: 6432729552214397797}
   - component: {fileID: 1770966180}
   - component: {fileID: 1770966179}
+  - component: {fileID: 1583188495}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -239,7 +242,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6432729552214397798}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -265,6 +268,22 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0035629272, y: 0}
   serializedVersion: 2
-  m_Radius: 0.091
+  m_Radius: 0.26914883
+--- !u!58 &1583188495
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432729552214397798}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008122563, y: 0.007107258}
+  serializedVersion: 2
+  m_Radius: 0.25733936

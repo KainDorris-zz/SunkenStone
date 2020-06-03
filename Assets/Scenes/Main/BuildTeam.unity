@@ -169,18 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3929bc86190834c9e62d0b08b6f35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &667339418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1752571159558007825, guid: 188b8356d0c8c7848ad9c582bd8abd62,
-    type: 3}
-  m_PrefabInstance: {fileID: 1752571159117457035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446c01cdb3cd4ac2aafa6455366d8f0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &987857814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9022505114431090257, guid: 2d281509779240248b1a8453c6a89b9d,
@@ -421,7 +409,8 @@ PrefabInstance:
         type: 3}
       propertyPath: monsterDatabase
       value: 
-      objectReference: {fileID: 667339418}
+      objectReference: {fileID: 11400000, guid: ec48438be7d9c1841845c03961dd6491,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24bcdf1b30d72594993ee1bda10148b9, type: 3}
 --- !u!1001 &3889542616109517671
